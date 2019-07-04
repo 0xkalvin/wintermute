@@ -25,30 +25,33 @@ Board::~Board(){
 }
 
 void Board::print(){
-
+    cout << "     ";
+    for(char l = 'A'; l <= 'I'; l++){
+        if(l < 'I') cout << "--" << l << "-";
+    }
+    cout << endl;
     for(int i = 0; i < 8; i++){
-        cout << " |  ";
+        cout << " | ";
         cout << i + 1;
-        cout << "  |";
+        cout << " ";
         for(int j = 0; j < 8; j++){
-            if(this->matrix[i][j] == 1) cout << "   " <<"P";
-            else if(this->matrix[i][j] == 3) cout << "   " <<"N";
-            else if(this->matrix[i][j] == 4) cout << "   " <<"B";
-            else if(this->matrix[i][j] == 5) cout << "   " <<"R";
-            else if(this->matrix[i][j] == 10) cout << "   " <<"Q";
-            else if(this->matrix[i][j] == 999) cout << "   " <<"K";
-            else cout << "   " <<"0";
+            if(this->matrix[i][j] == 1) cout <<"| " << "P" << " ";
+            else if(this->matrix[i][j] == 3) cout <<"| " <<"N" << " ";
+            else if(this->matrix[i][j] == 4) cout <<"| " <<"B" << " ";
+            else if(this->matrix[i][j] == 5) cout <<"| "  <<"R" << " ";
+            else if(this->matrix[i][j] == 10) cout <<"| " <<"Q" << " ";
+            else if(this->matrix[i][j] == 999) cout <<"| "  <<"K" << " ";
+            else cout <<"| "  << "." << " ";
+
+            if(j == 7)  cout << "|";
         }
         cout <<endl;
     }
-    cout << "         ";
 
-    for(char l = 'a'; l <= 'i'; l++){
-        cout << "  ";
-        if(l < 'i') cout << l;
-        cout << " ";
+    cout << "     ";
+    for(char l = 'A'; l <= 'I'; l++){
+        if(l < 'I') cout << "--" << l << "-";
     }
-    
     cout <<endl;
 }
 

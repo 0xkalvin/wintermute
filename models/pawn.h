@@ -1,18 +1,12 @@
-#include <iostream>
+#include "piece.h"
 #ifndef PAWN_H
 #define PAWN_H
 
 
-class Pawn{
-    private:
-        int value;
-        bool alive;
-
+class Pawn : public Piece{
     public:
         Pawn();
         ~Pawn();
-        bool isAlive();
-        int getValue();
 
 };
 

@@ -3,6 +3,7 @@
 
 Game::Game(){
     this->board = new Board();
+    this->board->init();
 }
 
 Game::~Game(){   

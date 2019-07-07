@@ -7,6 +7,7 @@ class Bishop : public Piece{
     public:
         Bishop();
         ~Bishop();
+        void move(Board *b, int x, int y);
 
 };
 

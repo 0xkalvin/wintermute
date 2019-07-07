@@ -1,8 +1,8 @@
-#include <iostream>
 #ifndef PIECE_H
 #define PIECE_H
 
-using namespace std;
+#include "board.h" 
+#include <cstdlib>
 
 class Piece{
     private:
@@ -18,7 +18,6 @@ class Piece{
         char getSymbol();
         int getValue();
         bool isAlive();
-        void move();
 };
 
 

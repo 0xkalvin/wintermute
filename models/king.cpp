@@ -5,3 +5,6 @@ King::King() : Piece('K', 999){}
 
 King::~King(){}
 
+void King::move(Board *b, int x, int y){
+    
+}

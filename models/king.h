@@ -7,6 +7,7 @@ class King : public Piece{
     public:
         King();
         ~King();
+        void move(Board *b, int x, int y);
 
 };
 

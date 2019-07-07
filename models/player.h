@@ -23,7 +23,7 @@ class Player{
     public:
         Player(Board *b, char color);
         ~Player();
-        void move();
+        void move(char l, int n);
 
 };
 

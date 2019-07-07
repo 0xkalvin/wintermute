@@ -9,6 +9,8 @@ class Game{
         Board *board;
         Player *white;
         Player *black;
+        bool isOver;
+        int moves;
 
     public:
         Game();

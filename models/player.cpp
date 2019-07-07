@@ -55,6 +55,6 @@ Player::~Player()
 }
 
 
-void Player::move(){
-    
+void Player::move(char l, int n){
+
 }

@@ -25,14 +25,20 @@ Board::~Board(){
 }
 
 void Board::print(){
+    
+    cout <<endl;
     cout << "     ";
     for(char l = 'A'; l <= 'I'; l++){
-        if(l < 'I') cout << "--" << l << "-";
+        if(l < 'I') cout << "  " << l << " ";
     }
-    cout << endl;
+    
+    cout <<endl << "     ";
+    for(int i = 0; i < 8; i++)    cout << " ---";
+    cout <<endl;
+
     for(int i = 0; i < 8; i++){
-        cout << " | ";
-        cout << i + 1;
+        cout << "   ";
+        cout << 8 - i;
         cout << " ";
         for(int j = 0; j < 8; j++){
             if(this->matrix[i][j] == 1) cout <<"| " << "P" << " ";
@@ -45,39 +51,19 @@ void Board::print(){
 
             if(j == 7)  cout << "|";
         }
+        cout <<endl << " ";
+        for(int i = 0; i <= 8; i++){
+            if(i != 0)  cout << " ---";
+            else cout << "    ";
+        }    
+
         cout <<endl;
     }
 
     cout << "     ";
     for(char l = 'A'; l <= 'I'; l++){
-        if(l < 'I') cout << "--" << l << "-";
+        if(l < 'I') cout << "  " << l << " ";
     }
     cout <<endl;
 }
 
-void Board::init(){
-    this->pawn = new Pawn();
-    this->rook = new Rook();
-    this->knight = new Knight();
-    this->bishop = new Bishop();
-    this->queen = new Queen();
-    this->king = new King();
-    
-    for(int i = 0; i < 8; i++){  
-        // BLACK
-        this->matrix[1][i] = this->pawn->getValue();
-        if(i == 0 || i == 7)this->matrix[0][i] = this->rook->getValue();
-        else if(i == 1 || i == 6)this->matrix[0][i] = this->knight->getValue();
-        else if(i == 2 || i == 5)this->matrix[0][i] = this->bishop->getValue();
-        else if(i == 3)this->matrix[0][i] = this->queen->getValue();
-        else if(i == 4)this->matrix[0][i] = this->king->getValue();
-        // WHITE
-        this->matrix[6][i] = this->pawn->getValue();
-        if(i == 0 || i == 7)this->matrix[7][i] = this->rook->getValue();
-        else if(i == 1 || i == 6)this->matrix[7][i] = this->knight->getValue();
-        else if(i == 2 || i == 5)this->matrix[7][i] = this->bishop->getValue();
-        else if(i == 3)this->matrix[7][i] = this->queen->getValue();
-        else if(i == 4)this->matrix[7][i] = this->king->getValue();
-    }
- 
-}

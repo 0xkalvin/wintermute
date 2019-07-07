@@ -8,22 +8,20 @@
 #include "queen.h"
 #include "king.h"
 
+class Player;
 
 
 class Board{
     private:
         int **matrix;
-        Pawn *pawn;
-        Rook *rook;
-        Knight *knight;
-        Bishop *bishop;
-        Queen *queen;
-        King *king;
+        friend class Player;
+
+        Piece **board;
+
 
     public:
         Board();
         ~Board();
-        void init();
         void print();
 
 };

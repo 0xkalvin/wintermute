@@ -7,9 +7,9 @@
 int main()
 {
 
-    Game *game = new Game();
+    Game game;
 
-    game->print();
-
+    game.run();
+    
     return 0;
 }

@@ -1,7 +1,7 @@
 #include "bishop.h"
 
 
-Bishop::Bishop() : Piece('B', 4){}
+Bishop::Bishop() : Piece(bishopSymbol, bishopValue){}
 
 Bishop::~Bishop(){}
 
@@ -10,6 +10,6 @@ void Bishop::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDes
 
 
 
-    b->matrix[xOrigin][yOrigin] = 0;
+    b->matrix[xOrigin][yOrigin] = emptyValue;
     b->matrix[xDestination][yDestination] = this->getValue();
 }

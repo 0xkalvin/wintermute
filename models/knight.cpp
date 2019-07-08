@@ -1,7 +1,7 @@
 #include "knight.h"
 
 
-Knight::Knight() : Piece('N', 3){}
+Knight::Knight() : Piece(knightSymbol, knightValue){}
 
 Knight::~Knight(){}
 
@@ -11,7 +11,7 @@ void Knight::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDes
     if(abs(yDestination - yOrigin) > 1 || abs(yDestination - yOrigin) < 0 ) throw new string("Pawn cannot move to that square.");
 
     
-    b->matrix[xOrigin][yOrigin] = 0;
+    b->matrix[xOrigin][yOrigin] = emptyValue;
     b->matrix[xDestination][yDestination] = this->getValue();
 
 }

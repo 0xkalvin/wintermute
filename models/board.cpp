@@ -41,13 +41,13 @@ void Board::print(){
         cout << 8 - i;
         cout << " ";
         for(int j = 0; j < 8; j++){
-            if(this->matrix[i][j] == 1) cout <<"| " << "P" << " ";
-            else if(this->matrix[i][j] == 3) cout <<"| " <<"N" << " ";
-            else if(this->matrix[i][j] == 4) cout <<"| " <<"B" << " ";
-            else if(this->matrix[i][j] == 5) cout <<"| "  <<"R" << " ";
-            else if(this->matrix[i][j] == 10) cout <<"| " <<"Q" << " ";
-            else if(this->matrix[i][j] == 999) cout <<"| "  <<"K" << " ";
-            else cout <<"| "  << "." << " ";
+            if(this->matrix[i][j] == pawnValue) cout <<"| " << pawnSymbol << " ";
+            else if(this->matrix[i][j] == knightValue) cout <<"| " << knightSymbol << " ";
+            else if(this->matrix[i][j] == bishopValue) cout <<"| " << bishopSymbol << " ";
+            else if(this->matrix[i][j] == rookValue) cout <<"| "  << rookSymbol << " ";
+            else if(this->matrix[i][j] == queenValue) cout <<"| " << queenSymbol << " ";
+            else if(this->matrix[i][j] == kingValue) cout <<"| "  << kingSymbol << " ";
+            else cout <<"| "  << emptySymbol << " ";
 
             if(j == 7)  cout << "|";
         }

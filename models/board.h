@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include <iostream>
+#include "../config/settings.h"
 
 using namespace std;
 

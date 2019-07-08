@@ -2,6 +2,7 @@
 #define PIECE_H
 
 #include "board.h" 
+#include "../config/settings.h"
 #include <cstdlib>
 
 class Piece{

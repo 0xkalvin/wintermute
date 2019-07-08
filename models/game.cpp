@@ -14,17 +14,20 @@ Game::~Game(){
 }
 
 void Game::print(){  
-    this->board->print(); 
+    cout << "                CHESS GAME" <<endl;
+    this->board->print();
+    cout << "Number of moves: " << this->moves <<endl;
+    // cout << "Last move: " << this->lastMove <<endl;
 }
 
 void Game::input(){
     int numberOrigin, numberDestination;
     char letterOrigin, letterDestination;
-    bool isMoveInvalid = true;
+    bool isMoveValid = false;
 
 
 
-    while(isMoveInvalid){
+    while(!isMoveValid){
         if(this->moves % 2 == 0) cout << "White to move." <<endl;
         else cout << "Black to move." <<endl;
 
@@ -54,15 +57,16 @@ void Game::input(){
         
         if(this->moves % 2 == 0){
             
-            isMoveInvalid = this->white->move(this->board, letterOrigin, numberOrigin, letterDestination, numberDestination, isMoveInvalid);
+            isMoveValid = this->white->move(this->board, letterOrigin, numberOrigin, letterDestination, numberDestination);
         }
         else {
-            isMoveInvalid = this->black->move(this->board, letterOrigin, numberOrigin, letterDestination, numberDestination, isMoveInvalid);
+            isMoveValid = this->black->move(this->board, letterOrigin, numberOrigin, letterDestination, numberDestination);
         }
     }
 
     this->moves += 1;
-
+    // this->lastMove[0]  = letterDestination;
+    // this->lastMove[1]  = '0' + numberDestination; 
     cout << letterOrigin << numberOrigin <<endl;
 }
 

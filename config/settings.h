@@ -1,6 +1,8 @@
 #ifndef GAME_CONSTANTS
 #define GAME_CONSTANTS 
 
+#include <math.h> 
+
 const int emptyValue = 0;
 const char emptySymbol = '.';
 

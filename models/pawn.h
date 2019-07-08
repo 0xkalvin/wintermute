@@ -6,7 +6,7 @@ class Pawn : public Piece{
     public:
         Pawn(bool white);
         ~Pawn();
-        void move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
+        bool move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
 
 };
 

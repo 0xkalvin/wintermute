@@ -7,7 +7,7 @@ class Rook : public Piece{
     public:
         Rook(bool white);
         ~Rook();
-        void move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
+        bool move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
 
 };
 

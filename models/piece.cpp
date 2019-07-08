@@ -1,11 +1,10 @@
 #include "piece.h"
 
 
-Piece::Piece(char s, int v){
+Piece::Piece(char s, int v, bool white){
     this->symbol = s;
     this->value = v;
-    // this->x_position = x_pos;
-    // this->y_position = y_pos;
+    this->white = white;
 }
 
 Piece::~Piece(){}
@@ -16,4 +15,8 @@ char Piece::getSymbol(){
 
 int Piece::getValue(){
     return this->value;
+}
+
+bool Piece::isWhite(){
+    return this->white;
 }

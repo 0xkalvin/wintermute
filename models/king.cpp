@@ -1,7 +1,7 @@
 #include "king.h"
 
 
-King::King() : Piece(kingSymbol, kingValue){}
+King::King(bool white) : Piece(kingSymbol, kingValue, white){}
 
 King::~King(){}
 
@@ -11,5 +11,5 @@ void King::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDesti
 
 
     b->matrix[xOrigin][yOrigin] = emptyValue;
-    b->matrix[xDestination][yDestination] = this->getValue();
+    b->matrix[xDestination][yDestination] = this->isWhite() ? this->getValue() : -1*this->getValue() ; 
 }

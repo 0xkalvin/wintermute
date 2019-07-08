@@ -12,13 +12,15 @@ class Piece{
         bool alive;
         int x_position;
         int y_position;
+        bool white;
     
     public:
-        Piece(char s, int v);
+        Piece(char s, int v, bool white);
         ~Piece();
         char getSymbol();
         int getValue();
         bool isAlive();
+        bool isWhite();
 };
 
 

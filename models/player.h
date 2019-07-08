@@ -18,12 +18,12 @@ class Player{
         Bishop *bishop;
         Queen *queen;
         King *king;
-
+        bool isWhite;
 
     public:
         Player(Board *b, char color);
         ~Player();
-        void move(Board *b, char letterOrigin, int numberOrigin, char letterDestination, int numberDestination);
+        bool move(Board *b, char letterOrigin, int numberOrigin, char letterDestination, int numberDestination, bool invalid);
 
 };
 

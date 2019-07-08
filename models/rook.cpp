@@ -1,7 +1,7 @@
 #include "rook.h"
 
 
-Rook::Rook() : Piece(rookSymbol, rookValue){}
+Rook::Rook(bool white) : Piece(rookSymbol, rookValue, white){}
 
 Rook::~Rook(){}
 
@@ -10,7 +10,7 @@ void Rook::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDesti
     
     if(b->matrix[xDestination][yDestination] == emptyValue){
         b->matrix[xOrigin][yOrigin] = emptyValue;
-        b->matrix[xDestination][yDestination] = this->getValue();
+        b->matrix[xDestination][yDestination] = this->isWhite() ? this->getValue() : -1*this->getValue(); 
     }
     
 }

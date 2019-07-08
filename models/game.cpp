@@ -20,40 +20,45 @@ void Game::print(){
 void Game::input(){
     int numberOrigin, numberDestination;
     char letterOrigin, letterDestination;
+    bool isMoveInvalid = true;
 
-    if(this->moves % 2 == 0) cout << "White to move." <<endl;
-    else cout << "Black to move." <<endl;
 
-    cout << "which piece do you want to move?" <<endl;
-    cout << "Enter the column letter " <<endl;
-    cin >> letterOrigin;
-    cout << "Enter the line number" <<endl;
-    cin >> numberOrigin;
 
-    cout << "To where do you want to move it?" <<endl;
-    cout << "Enter the column letter " <<endl;
-    cin >> letterDestination;
-    cout << "Enter the line number" <<endl;
-    cin >> numberDestination;
+    while(isMoveInvalid){
+        if(this->moves % 2 == 0) cout << "White to move." <<endl;
+        else cout << "Black to move." <<endl;
 
-    if(numberOrigin != 1 && numberOrigin != 2 && numberOrigin != 3  && numberOrigin != 4 
-    && numberOrigin != 5 && numberOrigin != 6 && numberOrigin != 7 && numberOrigin != 8
-    && numberDestination != 1 && numberDestination != 2 && numberDestination != 3  && numberDestination != 4 
-    && numberDestination != 5 && numberDestination != 6 && numberDestination != 7 
-    && numberDestination != 8) throw new string("Line number must be between 1-8");
+        cout << "which piece do you want to move?" <<endl;
+        cout << "Enter the column letter " <<endl;
+        cin >> letterOrigin;
+        cout << "Enter the line number" <<endl;
+        cin >> numberOrigin;
 
-    if(letterOrigin != 'A' && letterOrigin != 'B' && letterOrigin != 'C'  && letterOrigin != 'D' 
-    && letterOrigin != 'E' && letterOrigin != 'F' && letterOrigin != 'G' && letterOrigin != 'H'
-    && letterDestination != 'A' && letterDestination != 'B' && letterDestination != 'C'  
-    && letterDestination != 'D' && letterDestination != 'E' && letterDestination != 'F' 
-    && letterDestination != 'G' && letterDestination != 'H') throw new string("column letter must be between A-H");
-    
-    if(this->moves % 2 == 0){
+        cout << "To where do you want to move it?" <<endl;
+        cout << "Enter the column letter " <<endl;
+        cin >> letterDestination;
+        cout << "Enter the line number" <<endl;
+        cin >> numberDestination;
+
+        if(numberOrigin != 1 && numberOrigin != 2 && numberOrigin != 3  && numberOrigin != 4 
+        && numberOrigin != 5 && numberOrigin != 6 && numberOrigin != 7 && numberOrigin != 8
+        && numberDestination != 1 && numberDestination != 2 && numberDestination != 3  && numberDestination != 4 
+        && numberDestination != 5 && numberDestination != 6 && numberDestination != 7 
+        && numberDestination != 8) cout << "Line number must be between 1-8" <<endl;
+
+        if(letterOrigin != 'A' && letterOrigin != 'B' && letterOrigin != 'C'  && letterOrigin != 'D' 
+        && letterOrigin != 'E' && letterOrigin != 'F' && letterOrigin != 'G' && letterOrigin != 'H'
+        && letterDestination != 'A' && letterDestination != 'B' && letterDestination != 'C'  
+        && letterDestination != 'D' && letterDestination != 'E' && letterDestination != 'F' 
+        && letterDestination != 'G' && letterDestination != 'H') cout << "column letter must be between A-H" << endl;
         
-        this->white->move(this->board, letterOrigin, numberOrigin, letterDestination, numberDestination);
-    }
-    else {
-        this->black->move(this->board, letterOrigin, numberOrigin, letterDestination, numberDestination);
+        if(this->moves % 2 == 0){
+            
+            isMoveInvalid = this->white->move(this->board, letterOrigin, numberOrigin, letterDestination, numberDestination, isMoveInvalid);
+        }
+        else {
+            isMoveInvalid = this->black->move(this->board, letterOrigin, numberOrigin, letterDestination, numberDestination, isMoveInvalid);
+        }
     }
 
     this->moves += 1;

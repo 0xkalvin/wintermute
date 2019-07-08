@@ -5,7 +5,7 @@
 
 class Knight : public Piece{
     public:
-        Knight();
+        Knight(bool white);
         ~Knight();
         void move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
 

@@ -1,7 +1,7 @@
 #include "knight.h"
 
 
-Knight::Knight() : Piece(knightSymbol, knightValue){}
+Knight::Knight(bool white) : Piece(knightSymbol, knightValue, white){}
 
 Knight::~Knight(){}
 
@@ -12,6 +12,6 @@ void Knight::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDes
 
     
     b->matrix[xOrigin][yOrigin] = emptyValue;
-    b->matrix[xDestination][yDestination] = this->getValue();
+    b->matrix[xDestination][yDestination] = this->isWhite() ? this->getValue() : -1*this->getValue(); 
 
 }

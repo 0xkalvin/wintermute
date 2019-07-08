@@ -1,7 +1,7 @@
 #include "bishop.h"
 
 
-Bishop::Bishop() : Piece(bishopSymbol, bishopValue){}
+Bishop::Bishop(bool white) : Piece(bishopSymbol, bishopValue, white){}
 
 Bishop::~Bishop(){}
 
@@ -11,5 +11,5 @@ void Bishop::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDes
 
 
     b->matrix[xOrigin][yOrigin] = emptyValue;
-    b->matrix[xDestination][yDestination] = this->getValue();
+    b->matrix[xDestination][yDestination] = this->isWhite() ? this->getValue() : -1*this->getValue() ; 
 }

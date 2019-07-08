@@ -1,7 +1,7 @@
 #include "queen.h"
 
 
-Queen::Queen() : Piece(queenSymbol, queenValue){}
+Queen::Queen(bool white) : Piece(queenSymbol, queenValue, white){}
 
 Queen::~Queen(){}
 
@@ -9,5 +9,5 @@ void Queen::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDest
     
 
     b->matrix[xOrigin][yOrigin] = emptyValue;
-    b->matrix[xDestination][yDestination] = this->getValue();
+    b->matrix[xDestination][yDestination] = this->isWhite() ? this->getValue() : -1*this->getValue(); 
 }

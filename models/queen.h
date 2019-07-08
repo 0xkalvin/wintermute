@@ -5,7 +5,7 @@
 
 class Queen : public Piece{
     public:
-        Queen();
+        Queen(bool white);
         ~Queen();
         void move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
 

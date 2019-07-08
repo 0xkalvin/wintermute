@@ -2,29 +2,30 @@
 
 Player::Player(Board *b, char color)
 {
-    this->pawn = new Pawn();
-    this->rook = new Rook();
-    this->knight = new Knight();
-    this->bishop = new Bishop();
-    this->queen = new Queen();
-    this->king = new King();
+    this->isWhite = color == 'B' ? false : true;
+    this->pawn = new Pawn(this->isWhite);
+    this->rook = new Rook(this->isWhite);
+    this->knight = new Knight(this->isWhite);
+    this->bishop = new Bishop(this->isWhite);
+    this->queen = new Queen(this->isWhite);
+    this->king = new King(this->isWhite);
 
     for (int i = 0; i < 8; i++)
     {
         // BLACK
-        if (color == 'B')
+        if (!this->isWhite)
         {
-            b->matrix[1][i] = this->pawn->getValue();
+            b->matrix[1][i] = -1*this->pawn->getValue();
             if (i == 0 || i == 7)
-                b->matrix[0][i] = this->rook->getValue();
+                b->matrix[0][i] = -1*this->rook->getValue();
             else if (i == 1 || i == 6)
-                b->matrix[0][i] = this->knight->getValue();
+                b->matrix[0][i] = -1*this->knight->getValue();
             else if (i == 2 || i == 5)
-                b->matrix[0][i] = this->bishop->getValue();
+                b->matrix[0][i] = -1*this->bishop->getValue();
             else if (i == 3)
-                b->matrix[0][i] = this->queen->getValue();
+                b->matrix[0][i] = -1*this->queen->getValue();
             else if (i == 4)
-                b->matrix[0][i] = this->king->getValue();
+                b->matrix[0][i] = -1*this->king->getValue();
         }
         // WHITE
         else
@@ -55,7 +56,7 @@ Player::~Player()
 }
 
 
-void Player::move(Board *b, char letterOrigin, int numberOrigin, char letterDestination, int numberDestination){
+bool Player::move(Board *b, char letterOrigin, int numberOrigin, char letterDestination, int numberDestination, bool invalid){
     int columnOrigin, lineOrigin, columnDestination, lineDestination;
     
     lineOrigin = 8 - numberOrigin;
@@ -79,11 +80,26 @@ void Player::move(Board *b, char letterOrigin, int numberOrigin, char letterDest
     else if(letterDestination == 'G') columnDestination = 6;
     else if(letterDestination == 'H') columnDestination = 7;
 
-    if(b->matrix[lineOrigin][columnOrigin] == this->pawn->getValue()) this->pawn->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
-    else if(b->matrix[lineOrigin][columnOrigin] == this->rook->getValue()) this->rook->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
-    else if(b->matrix[lineOrigin][columnOrigin] == this->knight->getValue()) this->knight->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
-    else if(b->matrix[lineOrigin][columnOrigin] == this->bishop->getValue()) this->bishop->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
-    else if(b->matrix[lineOrigin][columnOrigin] == this->queen->getValue()) this->queen->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
-    else if(b->matrix[lineOrigin][columnOrigin] == this->king->getValue()) this->king->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    if(b->matrix[lineDestination][columnDestination] > 0 && this->isWhite) {
+        cout << "Invalid move: there`s already a white piece on" << letterDestination << numberDestination <<endl;
+        return invalid;
+    }
+    else if(b->matrix[lineDestination][columnDestination] < 0 && !this->isWhite){    
+        cout << "Invalid move: there`s already a black piece on" << letterDestination << numberDestination <<endl;
+        return invalid;
+    }
+
+    if(abs(b->matrix[lineOrigin][columnOrigin]) == this->pawn->getValue()) this->pawn->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->rook->getValue()) this->rook->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->knight->getValue()) this->knight->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->bishop->getValue()) this->bishop->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->queen->getValue()) this->queen->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->king->getValue()) this->king->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else{
+         cout << "There`s no piece on the " << letterOrigin << numberOrigin <<endl;
+         return invalid;
+    }
+    invalid = false;
+    return invalid;
 
 }

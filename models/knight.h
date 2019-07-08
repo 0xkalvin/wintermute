@@ -7,7 +7,7 @@ class Knight : public Piece{
     public:
         Knight(bool white);
         ~Knight();
-        bool move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
+        void move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
 
 };
 

@@ -23,7 +23,7 @@ class Player{
     public:
         Player(Board *b, char color);
         ~Player();
-        bool move(Board *b, char letterOrigin, int numberOrigin, char letterDestination, int numberDestination);
+        void move(Board *b, char letterOrigin, int numberOrigin, char letterDestination, int numberDestination);
 
 };
 

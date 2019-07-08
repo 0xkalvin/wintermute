@@ -7,7 +7,7 @@ class King : public Piece{
     public:
         King(bool white);
         ~King();
-        bool move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
+        void move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
 
 };
 

@@ -80,10 +80,10 @@ void Player::move(Board *b, char letterOrigin, int numberOrigin, char letterDest
     else if(letterDestination == 'H') columnDestination = 7;
 
     if(b->matrix[lineOrigin][columnOrigin] == this->pawn->getValue()) this->pawn->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
-    else if(b->matrix[lineOrigin][columnOrigin] == this->rook->getValue()) this->rook->move(b, lineOrigin, columnOrigin);
-    else if(b->matrix[lineOrigin][columnOrigin] == this->knight->getValue()) this->knight->move(b, lineOrigin, columnOrigin);
-    else if(b->matrix[lineOrigin][columnOrigin] == this->bishop->getValue()) this->bishop->move(b, lineOrigin, columnOrigin);
-    else if(b->matrix[lineOrigin][columnOrigin] == this->queen->getValue()) this->queen->move(b, lineOrigin, columnOrigin);
-    else if(b->matrix[lineOrigin][columnOrigin] == this->king->getValue()) this->king->move(b, lineOrigin, columnOrigin);
+    else if(b->matrix[lineOrigin][columnOrigin] == this->rook->getValue()) this->rook->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(b->matrix[lineOrigin][columnOrigin] == this->knight->getValue()) this->knight->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(b->matrix[lineOrigin][columnOrigin] == this->bishop->getValue()) this->bishop->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(b->matrix[lineOrigin][columnOrigin] == this->queen->getValue()) this->queen->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(b->matrix[lineOrigin][columnOrigin] == this->king->getValue()) this->king->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
 
 }

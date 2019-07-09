@@ -14,7 +14,7 @@ Game::~Game(){
 }
 
 void Game::print(){  
-    cout << "                CHESS GAME" <<endl;
+    cout << MAGENTA <<"                CHESS GAME" << RESET <<endl;
     this->board->print();
     cout << "Number of moves: " << this->moves <<endl;
     // cout << "Last move: " << this->lastMove <<endl;
@@ -30,7 +30,7 @@ void Game::input(){
     while(!isMoveValid){
         try{
             if(this->moves % 2 == 0) cout << "White to move." <<endl;
-            else cout << "Black to move." <<endl;
+            else cout <<"Black to move." <<endl;
 
             cout << "which piece do you want to move?" <<endl;
             cout << "Enter the column letter " <<endl;

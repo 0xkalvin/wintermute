@@ -41,12 +41,14 @@ void Board::print(){
         cout << MAGENTA << 8 - i << RESET;
         cout << " ";
         for(int j = 0; j < 8; j++){
+            // WHITE
             if(abs(this->matrix[i][j]) == pawnValue && this->matrix[i][j] > 0) cout <<"| " << BOLDWHITE << pawnSymbol << RESET <<" ";
             else if(abs(this->matrix[i][j]) == knightValue && this->matrix[i][j] > 0) cout <<"| " << BOLDWHITE << knightSymbol << RESET << " ";
             else if(abs(this->matrix[i][j]) == bishopValue && this->matrix[i][j] > 0) cout <<"| " << BOLDWHITE << bishopSymbol << RESET << " ";
             else if(abs(this->matrix[i][j]) == rookValue && this->matrix[i][j] > 0) cout <<"| "  << BOLDWHITE << rookSymbol << RESET << " ";
             else if(abs(this->matrix[i][j]) == queenValue && this->matrix[i][j] > 0) cout <<"| " << BOLDWHITE << queenSymbol << RESET << " ";
             else if(abs(this->matrix[i][j]) == kingValue && this->matrix[i][j] > 0) cout <<"| "  << BOLDWHITE << kingSymbol << RESET << " ";
+            // BLACK
             else if(abs(this->matrix[i][j]) == pawnValue && this->matrix[i][j] < 0) cout <<"| " << BOLDGREEN << pawnSymbol << RESET << " ";
             else if(abs(this->matrix[i][j]) == knightValue && this->matrix[i][j] < 0) cout <<"| " << BOLDGREEN << knightSymbol << RESET << " ";
             else if(abs(this->matrix[i][j]) == bishopValue && this->matrix[i][j] < 0) cout <<"| " << BOLDGREEN << bishopSymbol << RESET << " ";

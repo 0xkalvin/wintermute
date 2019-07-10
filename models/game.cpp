@@ -14,7 +14,7 @@ Game::~Game(){
 }
 
 void Game::print(){  
-    cout << MAGENTA <<"                CHESS GAME" << RESET <<endl;
+    cout << MAGENTA <<"                WINTERMUTE" << RESET <<endl;
     this->board->print();
     cout << "Number of moves: " << this->moves <<endl;
     // cout << "Last move: " << this->lastMove <<endl;

@@ -1,7 +1,7 @@
 #include "rook.h"
 
 
-Rook::Rook(bool white) : Piece(rookSymbol, rookValue, white){}
+Rook::Rook(bool white) : Piece(rookSymbol, rookValue, white, rookQuantity){}
 
 Rook::~Rook(){}
 

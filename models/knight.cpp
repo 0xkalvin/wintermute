@@ -1,7 +1,7 @@
 #include "knight.h"
 
 
-Knight::Knight(bool white) : Piece(knightSymbol, knightValue, white){}
+Knight::Knight(bool white) : Piece(knightSymbol, knightValue, white, knightQuantity){}
 
 Knight::~Knight(){}
 

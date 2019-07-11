@@ -1,7 +1,7 @@
 #include "bishop.h"
 
 
-Bishop::Bishop(bool white) : Piece(bishopSymbol, bishopValue, white){}
+Bishop::Bishop(bool white) : Piece(bishopSymbol, bishopValue, white, bishopQuantity){}
 
 Bishop::~Bishop(){}
 

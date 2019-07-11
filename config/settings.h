@@ -21,6 +21,14 @@ const char bishopSymbol = 'B';
 const char queenSymbol = 'Q';
 const char kingSymbol = 'K';
 
+const int pawnQuantity = 8;
+const int rookQuantity = 2;
+const int knightQuantity = 2;
+const int bishopQuantity = 2;
+const int queenQuantity = 1;
+const int kingQuantity = 1;
+
+
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
 #define RED     "\033[31m"      /* Red */

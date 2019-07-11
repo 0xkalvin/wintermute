@@ -9,18 +9,19 @@ class Piece{
     private:
         char symbol;
         int value;
-        bool alive;
-        int x_position;
-        int y_position;
         bool white;
+        int quantity;
+        int alive;
     
     public:
-        Piece(char s, int v, bool white);
+        Piece(char s, int v, bool white, int q);
         ~Piece();
         char getSymbol();
         int getValue();
-        bool isAlive();
         bool isWhite();
+        int getQuantity();
+        void captured();
+        int getAlive();
 };
 
 

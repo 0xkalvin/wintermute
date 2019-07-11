@@ -1,7 +1,7 @@
 #include "queen.h"
 
 
-Queen::Queen(bool white) : Piece(queenSymbol, queenValue, white){}
+Queen::Queen(bool white) : Piece(queenSymbol, queenValue, white, queenQuantity){}
 
 Queen::~Queen(){}
 

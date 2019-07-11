@@ -81,21 +81,41 @@ void Player::move(Board *b, char letterOrigin, int numberOrigin, char letterDest
     else if(letterDestination == 'G') columnDestination = 6;
     else if(letterDestination == 'H') columnDestination = 7;
 
-    if(b->matrix[lineDestination][columnDestination] > 0 && this->isWhite) {
+    if(b->matrix[lineDestination][columnDestination] > 0 && this->isWhite)
         throw "There`s already a white piece on that square";
-    }
-    else if(b->matrix[lineDestination][columnDestination] < 0 && !this->isWhite){    
+    
+    else if(b->matrix[lineDestination][columnDestination] < 0 && !this->isWhite)    
         throw "There`s already a black piece on that square";
-    }
+    
+    int destinationValue = b->matrix[lineDestination][columnDestination];
 
-    if(abs(b->matrix[lineOrigin][columnOrigin]) == this->pawn->getValue()) this->pawn->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
-    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->rook->getValue()) this->rook->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
-    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->knight->getValue()) this->knight->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
-    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->bishop->getValue()) this->bishop->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
-    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->queen->getValue()) this->queen->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
-    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->king->getValue()) this->king->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
-    else{
-         throw "There`s no piece on that square";
-    }
+    if(abs(b->matrix[lineOrigin][columnOrigin]) == this->pawn->getValue())
+        this->pawn->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->rook->getValue()) 
+        this->rook->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->knight->getValue()) 
+        this->knight->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->bishop->getValue()) 
+        this->bishop->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->queen->getValue()) 
+        this->queen->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else if(abs(b->matrix[lineOrigin][columnOrigin]) == this->king->getValue()) 
+        this->king->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
+    else    throw "There`s no piece on that square";
+
+    
+    
+    if(destinationValue != 0){
+        if(abs(destinationValue) == pawnValue)
+            this->pawn->captured();
+        else if(abs(destinationValue) == knightValue)
+            this->knight->captured();
+        else if(abs(destinationValue) == bishopValue)
+            this->bishop->captured();
+        else if(abs(destinationValue) == rookValue)
+            this->rook->captured();
+        else if(abs(destinationValue) == queenValue)
+            this->queen->captured();
+    } 
     
 }

@@ -1,7 +1,7 @@
 #include "pawn.h"
 
 
-Pawn::Pawn(bool white) : Piece(pawnSymbol, pawnValue, white){}
+Pawn::Pawn(bool white) : Piece(pawnSymbol, pawnValue, white, pawnQuantity){}
 
 Pawn::~Pawn(){}
 

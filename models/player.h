@@ -10,6 +10,9 @@
 
 #include "board.h"
 
+
+class Game;
+
 class Player{
     private:
         Pawn *pawn;
@@ -19,6 +22,7 @@ class Player{
         Queen *queen;
         King *king;
         bool isWhite;
+        friend class Game;
 
     public:
         Player(Board *b, char color);

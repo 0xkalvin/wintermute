@@ -13,9 +13,43 @@ Game::~Game(){
     delete this->board;   
 }
 
+void Game::capturedPieces(){
+    int deadPawnsWhite = this->white->pawn->getQuantity() - this->white->pawn->getAlive();
+    int deadRooksWhite = this->white->rook->getQuantity() - this->white->rook->getAlive();
+    int deadKnightsWhite = this->white->knight->getQuantity() - this->white->knight->getAlive();
+    int deadBishopsWhite = this->white->bishop->getQuantity() - this->white->bishop->getAlive();
+    int deadQueenWhite = this->white->queen->getQuantity() - this->white->queen->getAlive();
+    
+    cout << endl << BOLDGREEN << "   CAPTURED BLACK: " << RESET;
+    int i;
+    for(i = 0; i < deadPawnsWhite; i++) cout << BOLDGREEN << pawnSymbol << RESET << " ";
+    for(i = 0; i < deadRooksWhite; i++) cout << BOLDGREEN << rookSymbol << RESET << " ";
+    for(i = 0; i < deadKnightsWhite; i++) cout << BOLDGREEN << knightSymbol << RESET << " ";
+    for(i = 0; i < deadBishopsWhite; i++) cout << BOLDGREEN << bishopSymbol << RESET << " ";
+    for(i = 0; i < deadQueenWhite; i++) cout << BOLDGREEN << queenSymbol << RESET << " ";
+
+    int deadPawnsBlack = this->black->pawn->getQuantity() - this->black->pawn->getAlive();
+    int deadRooksBlack= this->black->rook->getQuantity() - this->black->rook->getAlive();
+    int deadKnightsBlack = this->black->knight->getQuantity() - this->black->knight->getAlive();
+    int deadBishopsBlack = this->black->bishop->getQuantity() - this->black->bishop->getAlive();
+    int deadQueenBlack= this->black->queen->getQuantity() - this->black->queen->getAlive();
+
+    cout << endl << BOLDWHITE<< "   CAPTURED WHITE: " << RESET;
+    for(i = 0; i < deadPawnsBlack; i++) cout << BOLDWHITE << pawnSymbol << RESET << " ";
+    for(i = 0; i < deadRooksBlack; i++) cout << BOLDWHITE << rookSymbol << RESET << " ";
+    for(i = 0; i < deadKnightsBlack; i++) cout << BOLDWHITE << knightSymbol << RESET << " ";
+    for(i = 0; i < deadBishopsBlack; i++) cout << BOLDWHITE << bishopSymbol << RESET << " ";
+    for(i = 0; i < deadQueenBlack; i++) cout << BOLDWHITE << queenSymbol << RESET << " ";
+
+    cout <<endl;
+}
+
 void Game::print(){  
     cout << MAGENTA <<"                WINTERMUTE" << RESET <<endl;
     this->board->print();
+    
+    this->capturedPieces();
+
     cout << "Number of moves: " << this->moves <<endl;
     // cout << "Last move: " << this->lastMove <<endl;
 }

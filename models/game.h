@@ -18,6 +18,7 @@ class Game{
         void print();
         void input();
         void run();
+        void capturedPieces();
 
 };
 

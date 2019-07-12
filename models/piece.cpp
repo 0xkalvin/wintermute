@@ -6,6 +6,7 @@ Piece::Piece(char s, int v, bool white, int q){
     this->value = v;
     this->white = white;
     this->quantity = this->alive = q;
+    this->moved = false;
 }
 
 Piece::~Piece(){}

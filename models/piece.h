@@ -5,6 +5,14 @@
 #include "../config/settings.h"
 #include <cstdlib>
 
+class Pawn;
+class Knight;
+class Rook;
+class Bishop;
+class Queen;
+class King;
+
+
 class Piece{
     private:
         char symbol;
@@ -12,6 +20,13 @@ class Piece{
         bool white;
         int quantity;
         int alive;
+        bool moved;
+        friend class Pawn;
+        friend class Knight;
+        friend class Rook;
+        friend class Bishop;
+        friend class Queen;
+        friend class King;
     
     public:
         Piece(char s, int v, bool white, int q);

@@ -86,6 +86,12 @@ void Player::move(Board *b, char letterOrigin, int numberOrigin, char letterDest
     
     else if(b->matrix[lineDestination][columnDestination] < 0 && !this->isWhite)    
         throw "There`s already a black piece on that square";
+
+    if(b->matrix[lineOrigin][columnOrigin] > 0 && !this->isWhite)
+        throw "Black cannot move white piece";
+    
+    else if(b->matrix[lineOrigin][columnOrigin] < 0 && this->isWhite)    
+        throw "White cannot move black piece";
     
     int destinationValue = b->matrix[lineDestination][columnDestination];
 

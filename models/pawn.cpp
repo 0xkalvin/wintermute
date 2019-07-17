@@ -34,6 +34,30 @@ void Pawn::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDesti
     else if(!this->isWhite() && backwards < 0)
         throw "Pawn cannot move backwards";
 
+    if((!this->white && xDestination == 7) || (this->white && xDestination == 0)){
+        this->promotion(b, xOrigin, yOrigin, xDestination, yDestination);
+    }
+    else{
+        b->matrix[xOrigin][yOrigin] = emptyValue;
+        b->matrix[xDestination][yDestination] = this->isWhite() ? this->getValue() : -1*this->getValue(); 
+    }
+
+}
+
+void Pawn::promotion(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
+    char piece;
+    while(piece != rookSymbol && piece != knightSymbol && piece != bishopSymbol && piece != queenSymbol){
+        cout << "Promote pawn to: (R, K, B, Q) " <<endl;
+        cin >> piece;
+    }
+
+    int promotedValue;
+    if(piece == rookSymbol) promotedValue = rookValue;
+    else if(piece == knightSymbol) promotedValue = knightValue;
+    else if(piece == bishopSymbol) promotedValue = bishopValue;
+    else if(piece == queenSymbol) promotedValue = queenValue;
+        
     b->matrix[xOrigin][yOrigin] = emptyValue;
-    b->matrix[xDestination][yDestination] = this->isWhite() ? this->getValue() : -1*this->getValue(); 
+    b->matrix[xDestination][yDestination] = this->isWhite() ? promotedValue : -1*promotedValue;
+        
 }

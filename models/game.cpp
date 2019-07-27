@@ -71,13 +71,14 @@ void Game::input(){
             getline (cin, input);
             if(input.length() != 2) throw "Invalid input";
 
-            letterOrigin = input[0];
+            letterOrigin = toupper(input[0]);
             numberOrigin = (int)input[1] - 48;
 
             cout << "To where do you want to move it?" <<endl;
             getline (cin, input);
             if(input.length() != 2) throw "Invalid input";
-            letterDestination = input[0];
+            
+            letterDestination = toupper(input[0]);
             numberDestination = (int)input[1] - 48;
 
             if(numberOrigin != 1 && numberOrigin != 2 && numberOrigin != 3  && numberOrigin != 4 

@@ -67,16 +67,18 @@ void Game::input(){
             else cout <<"Black to move." <<endl;
 
             cout << "which piece do you want to move?" <<endl;
-            cout << "Enter the column letter " <<endl;
-            cin >> letterOrigin;
-            cout << "Enter the line number" <<endl;
-            cin >> numberOrigin;
+            string input;
+            getline (cin, input);
+            if(input.length() != 2) throw "Invalid input";
+
+            letterOrigin = input[0];
+            numberOrigin = (int)input[1] - 48;
 
             cout << "To where do you want to move it?" <<endl;
-            cout << "Enter the column letter " <<endl;
-            cin >> letterDestination;
-            cout << "Enter the line number" <<endl;
-            cin >> numberDestination;
+            getline (cin, input);
+            if(input.length() != 2) throw "Invalid input";
+            letterDestination = input[0];
+            numberDestination = (int)input[1] - 48;
 
             if(numberOrigin != 1 && numberOrigin != 2 && numberOrigin != 3  && numberOrigin != 4 
             && numberOrigin != 5 && numberOrigin != 6 && numberOrigin != 7 && numberOrigin != 8

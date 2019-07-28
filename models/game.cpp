@@ -14,6 +14,13 @@ Game::~Game(){
     delete this->white ;
 }
 
+/**
+    
+    To show both black & white captured pieces,
+    compares number of each active piece on the board
+    and each piece initial quantity 
+
+ */
 void Game::showCapturedPieces(){
     int deadPawnsWhite = this->white->pawn->getQuantity() - this->white->pawn->getAlive();
     int deadRooksWhite = this->white->rook->getQuantity() - this->white->rook->getAlive();
@@ -45,6 +52,9 @@ void Game::showCapturedPieces(){
     cout <<endl;
 }
 
+/**
+    Game interface
+ */
 void Game::print(){  
     cout << MAGENTA <<"                WINTERMUTE" << RESET <<endl;
     this->board->print();
@@ -54,6 +64,13 @@ void Game::print(){
     cout << "Number of moves: " << this->moves <<endl;
 }
 
+/**
+    
+    Takes user input & validates it 
+    if not valid, keeps asking for a valid move.
+    Controls white and black turn.
+
+ */
 void Game::input(){
     int numberOrigin, numberDestination;
     char letterOrigin, letterDestination;
@@ -109,8 +126,6 @@ void Game::input(){
     }
 
     this->moves += 1;
-    // this->lastMove[0]  = letterDestination;
-    // this->lastMove[1]  = '0' + numberDestination; 
     cout << letterOrigin << numberOrigin <<endl;
 }
 

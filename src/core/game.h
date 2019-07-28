@@ -1,14 +1,14 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "player.h"
+#include "../models/player.h"
 
 /**
     Game class 
     
     - Initializes the players & the board
     - Controls and validates player input
-    - Prints the action
+    - Prints the action 
 
  */
 class Game{

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../models/game.h"
+#include "game.h"
 
 
 /**

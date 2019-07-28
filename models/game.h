@@ -3,6 +3,14 @@
 
 #include "player.h"
 
+/**
+    Game class 
+    
+    - Initializes the players & the board
+    - Controls and validates player input
+    - Prints the action
+
+ */
 class Game{
     private:
         Board *board;
@@ -18,7 +26,7 @@ class Game{
         void print();
         void input();
         void run();
-        void capturedPieces();
+        void showCapturedPieces();
 
 };
 

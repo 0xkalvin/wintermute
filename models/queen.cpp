@@ -5,6 +5,12 @@ Queen::Queen(bool white) : Piece(queenSymbol, queenValue, white, queenQuantity){
 
 Queen::~Queen(){}
 
+/**
+    Queen move
+    
+    - Basically, the overlay of rook & bishop movement
+
+ */
 void Queen::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
     int xDiff = abs(xOrigin - xDestination);
     int yDiff = abs(yOrigin - yDestination);

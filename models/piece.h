@@ -12,7 +12,12 @@ class Bishop;
 class Queen;
 class King;
 
+/**
+    Base class for pieces 
+    
+    - Stores piece value, symbol, color, state
 
+ */
 class Piece{
     private:
         char symbol;

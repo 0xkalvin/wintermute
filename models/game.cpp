@@ -1,6 +1,5 @@
 #include "game.h"
 
-
 Game::Game(){
     this->isOver = false;
     this->moves = 0;
@@ -10,10 +9,12 @@ Game::Game(){
 }
 
 Game::~Game(){
-    delete this->board;   
+    delete this->board;  
+    delete this->black ;
+    delete this->white ;
 }
 
-void Game::capturedPieces(){
+void Game::showCapturedPieces(){
     int deadPawnsWhite = this->white->pawn->getQuantity() - this->white->pawn->getAlive();
     int deadRooksWhite = this->white->rook->getQuantity() - this->white->rook->getAlive();
     int deadKnightsWhite = this->white->knight->getQuantity() - this->white->knight->getAlive();
@@ -48,10 +49,9 @@ void Game::print(){
     cout << MAGENTA <<"                WINTERMUTE" << RESET <<endl;
     this->board->print();
     
-    this->capturedPieces();
+    this->showCapturedPieces();
 
     cout << "Number of moves: " << this->moves <<endl;
-    // cout << "Last move: " << this->lastMove <<endl;
 }
 
 void Game::input(){

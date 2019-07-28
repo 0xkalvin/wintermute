@@ -5,6 +5,15 @@ Pawn::Pawn(bool white) : Piece(pawnSymbol, pawnValue, white, pawnQuantity){}
 
 Pawn::~Pawn(){}
 
+
+/**
+    Pawn movements
+    
+    - Initial move controller (two squares forward allowed)
+    - Move one square forward and capture diagonally
+    - if it gets to the other side of the board, promotion 
+
+ */
 void Pawn::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){ 
 
     cout << "VALOR: " << b->matrix[xDestination][yDestination] <<endl;
@@ -44,6 +53,11 @@ void Pawn::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDesti
 
 }
 
+/**
+    
+    Promotes pawn to another more valuable piece if it hits the oponent edge of the board
+
+ */
 void Pawn::promotion(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
     char piece;
     while(piece != rookSymbol && piece != knightSymbol && piece != bishopSymbol && piece != queenSymbol){

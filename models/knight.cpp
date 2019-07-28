@@ -5,6 +5,13 @@ Knight::Knight(bool white) : Piece(knightSymbol, knightValue, white, knightQuant
 
 Knight::~Knight(){}
 
+/**
+    Knight movement 
+    
+    - Verifies move by checking if its origin & destination squares forms a square triangle
+    which has an area of √5  
+
+ */
 void Knight::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
     double h = sqrt(pow(xDestination - xOrigin, 2) + pow(yDestination - yOrigin, 2));
     if(sqrt(5) != h) {

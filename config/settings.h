@@ -2,7 +2,15 @@
 #define GAME_CONSTANTS 
 
 #include <math.h> 
+#include <string>
 
+/**
+    Game Constants 
+
+    - Values and symbols for each piece. They will be used as identifiers and to create scores
+    - Values for shell text colors
+
+ */
 const int emptyValue = 0;
 const char emptySymbol = '.';
 

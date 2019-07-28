@@ -18,7 +18,7 @@ class Game{
         Player *black;
         bool isOver;
         int moves;
-        char lastMove[2];
+        char lastMove[4];
 
     public:
         Game();

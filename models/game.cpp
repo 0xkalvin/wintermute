@@ -6,7 +6,6 @@ Game::Game(){
     this->board = new Board();
     this->black = new Player(this->board, 'B');
     this->white = new Player(this->board, 'W');
-    this->lastMove[0] = emptySymbol;
 }
 
 Game::~Game(){
@@ -64,7 +63,7 @@ void Game::print(){
 
     cout << "Number of moves: " << this->moves <<endl;
     
-    if(this->lastMove[0] != emptySymbol)
+    if(this->moves != 0)
         cout << this->lastMove[0] << this->lastMove[1] << " -> " << this->lastMove[2] << this->lastMove[3] <<endl;
 }
 

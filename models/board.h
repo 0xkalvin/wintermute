@@ -15,6 +15,13 @@ class Bishop;
 class Queen;
 class King;
 
+/**
+    Board class 
+    
+    - Initializes a 8x8 matrix that saves all squares values
+    - Prints the action using different colors depending on the square value
+
+ */
 class Board{
     private:
         int **matrix;

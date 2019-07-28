@@ -24,6 +24,14 @@ Board::~Board(){
     free(this->matrix);
 }
 
+
+/**
+    - Get all the stuff in position
+    - If not occupied, square receives an empty value
+    - Otherwise, it saves the piece value
+    - Differ black and white pieces by positive and negative integers
+
+ */
 void Board::print(){
     
     cout <<endl;

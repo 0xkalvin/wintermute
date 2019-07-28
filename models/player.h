@@ -13,6 +13,14 @@
 
 class Game;
 
+/**
+    Player class 
+    
+    - Initializes each piece
+    - Sets player color
+    - Move verifications
+
+ */
 class Player{
     private:
         Pawn *pawn;

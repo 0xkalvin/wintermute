@@ -63,8 +63,10 @@ void Game::print(){
 
     cout << "Number of moves: " << this->moves <<endl;
     
-    if(this->moves != 0)
+    if(this->moves != 0){
+        cout << "Last move: ";
         cout << this->lastMove[0] << this->lastMove[1] << " -> " << this->lastMove[2] << this->lastMove[3] <<endl;
+    }
 }
 
 /**
@@ -80,12 +82,15 @@ void Game::input(){
     bool isMoveValid = false;
 
 
-
+    // Asks for a move until the player enter a valid one
     while(!isMoveValid){
         try{
+            // Whose turn is it?
             if(this->moves % 2 == 0) cout << "White to move." <<endl;
             else cout <<"Black to move." <<endl;
 
+            // Player needs to inform the square coordinates for the piece he wants to move
+            // e.g. e2, D2, a2 
             cout << "which piece do you want to move?" <<endl;
             string input;
             getline (cin, input);
@@ -93,7 +98,7 @@ void Game::input(){
 
             letterOrigin = toupper(input[0]);
             numberOrigin = (int)input[1] - 48;
-
+            
             cout << "To where do you want to move it?" <<endl;
             getline (cin, input);
             if(input.length() != 2) throw "Invalid input";
@@ -101,18 +106,21 @@ void Game::input(){
             letterDestination = toupper(input[0]);
             numberDestination = (int)input[1] - 48;
 
+            // Line number verification 
             if(numberOrigin != 1 && numberOrigin != 2 && numberOrigin != 3  && numberOrigin != 4 
             && numberOrigin != 5 && numberOrigin != 6 && numberOrigin != 7 && numberOrigin != 8
             && numberDestination != 1 && numberDestination != 2 && numberDestination != 3  && numberDestination != 4 
             && numberDestination != 5 && numberDestination != 6 && numberDestination != 7 
             && numberDestination != 8) throw "Line number must be between 1-8";
-
+            
+            // Column letter verification 
             if(letterOrigin != 'A' && letterOrigin != 'B' && letterOrigin != 'C'  && letterOrigin != 'D' 
             && letterOrigin != 'E' && letterOrigin != 'F' && letterOrigin != 'G' && letterOrigin != 'H'
             && letterDestination != 'A' && letterDestination != 'B' && letterDestination != 'C'  
             && letterDestination != 'D' && letterDestination != 'E' && letterDestination != 'F' 
             && letterDestination != 'G' && letterDestination != 'H') throw "column letter must be between A-H";
             
+            // Player to play make a move
             if(this->moves % 2 == 0){
                 
                 this->white->move(this->board, letterOrigin, numberOrigin, letterDestination, numberDestination);
@@ -128,12 +136,12 @@ void Game::input(){
 
     }
 
+    // updates moves counter and also last move marker
     this->moves += 1;
     this->lastMove[0] = letterOrigin;
     this->lastMove[1] = numberOrigin + '0';
     this->lastMove[2] = letterDestination;
     this->lastMove[3] = numberDestination + '0';
-    cout << letterOrigin << numberOrigin <<endl;
 }
 
 void Game::run(){  

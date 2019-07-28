@@ -1,5 +1,10 @@
 #include "player.h"
 
+/**
+    
+    Setting color and pieces
+
+ */
 Player::Player(Board *b, char color)
 {
     this->isWhite = color == 'B' ? false : true;
@@ -55,7 +60,12 @@ Player::~Player()
     delete this->queen;
 }
 
+/**
+    
+    - Convert player input notation to matrix coordinates
+    - Based on the square value, move the right piece
 
+ */
 void Player::move(Board *b, char letterOrigin, int numberOrigin, char letterDestination, int numberDestination){
     int columnOrigin, lineOrigin, columnDestination, lineDestination;
     bool response;
@@ -81,6 +91,8 @@ void Player::move(Board *b, char letterOrigin, int numberOrigin, char letterDest
     else if(letterDestination == 'G') columnDestination = 6;
     else if(letterDestination == 'H') columnDestination = 7;
 
+
+    // Controls turns and some impossible moves
     if(b->matrix[lineDestination][columnDestination] > 0 && this->isWhite)
         throw "There`s already a white piece on that square";
     
@@ -109,8 +121,8 @@ void Player::move(Board *b, char letterOrigin, int numberOrigin, char letterDest
         this->king->move(b, lineOrigin, columnOrigin, lineDestination, columnDestination);
     else    throw "There`s no piece on that square";
 
-    
-    
+
+    // Controls the number of each captured piece and then uses it to show all off-board pieces
     if(destinationValue != 0){
         if(abs(destinationValue) == pawnValue)
             this->pawn->captured();

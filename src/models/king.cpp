@@ -5,12 +5,28 @@ King::King(bool white) : Piece(kingSymbol, kingValue, white, kingQuantity){}
 
 King::~King(){}
 
+/* 
+    
+*/
 void King::castle(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
-    if(this->moved) throw "King has already moved, it cannot castle";
-    
-    
-    int xDiff = abs(xOrigin - xDestination);
-    int yDiff = abs(yOrigin - yDestination);
+
+    // king side 
+    if(yDestination - yOrigin == 2 && b->matrix[xDestination][yDestination - 1] == emptyValue
+    && b->matrix[xDestination][yDestination] == emptyValue && abs(b->matrix[xDestination][yDestination+1]) == rookValue){
+        b->matrix[xDestination][yDestination] = this->isWhite() ? kingValue : -1*kingValue;
+        b->matrix[xDestination][yDestination - 1] = this->isWhite() ? rookValue : -1*rookValue;
+        b->matrix[xDestination][yDestination - 2] = emptyValue;
+        b->matrix[xDestination][yDestination + 1] = emptyValue;
+    }
+    // queen side
+    if(yDestination - yOrigin == -2 && b->matrix[xDestination][yDestination + 1] == emptyValue
+    && b->matrix[xDestination][yDestination] == emptyValue && abs(b->matrix[xDestination][yDestination-2]) == rookValue){
+        b->matrix[xDestination][yDestination] = this->isWhite() ? kingValue : -1*kingValue;
+        b->matrix[xDestination][yDestination + 1] = this->isWhite() ? rookValue : -1*rookValue;
+        b->matrix[xDestination][yDestination + 2] = emptyValue;
+        b->matrix[xDestination][yDestination - 2] = emptyValue;
+    }
+
 }
 
 /**
@@ -23,12 +39,19 @@ void King::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDesti
     int xDiff = abs(xOrigin - xDestination);
     int yDiff = abs(yOrigin - yDestination);
 
-    if((abs(xDestination - xOrigin) > 1 || abs(yDestination - yOrigin) > 1) || 
-    (xDiff != yDiff && xOrigin != xDestination && yOrigin != yDestination)) 
-        throw "King cannot move to that square";
-        
-    b->matrix[xOrigin][yOrigin] = emptyValue;
-    b->matrix[xDestination][yDestination] = this->isWhite() ? this->getValue() : -1*this->getValue();
+    // To see if its a castle movement, checks if the absolute value of Δy is 2
+    // also checks if king has already moved
+    if(!this->moved && xDestination == xOrigin && abs(yDestination - yOrigin) == 2){
+        this->castle(b, xOrigin, yOrigin, xDestination, yDestination);
+    }
+    else{
+         if((abs(xDestination - xOrigin) > 1 || abs(yDestination - yOrigin) > 1) || 
+            (xDiff != yDiff && xOrigin != xDestination && yOrigin != yDestination))
+                throw "King cannot move to that square";
+                
+            b->matrix[xOrigin][yOrigin] = emptyValue;
+            b->matrix[xDestination][yDestination] = this->isWhite() ? this->getValue() : -1*this->getValue();
+    }
 
     if(!this->moved)    this->moved = true;
 }

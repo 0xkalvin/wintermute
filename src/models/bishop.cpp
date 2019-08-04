@@ -1,9 +1,11 @@
 #include "bishop.h"
 
 
-Bishop::Bishop(bool white) : Piece(bishopSymbol, bishopValue, white, bishopQuantity){}
+template <typename P>
+Bishop<P>::Bishop(bool white) : Piece<P>(bishopSymbol, bishopValue, white, bishopQuantity){}
 
-Bishop::~Bishop(){}
+template <typename P>
+Bishop<P>::~Bishop(){}
 
 
 /**
@@ -12,7 +14,8 @@ Bishop::~Bishop(){}
     - Verifies if it's moving diagonally by checking Δx & Δy  
 
  */
-void Bishop::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
+template <typename P>
+void Bishop<P>::move(Board<P> *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
 
     int xDiff = abs(xOrigin - xDestination);
     int yDiff = abs(yOrigin - yDestination);

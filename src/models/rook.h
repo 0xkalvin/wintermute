@@ -3,11 +3,12 @@
 #define ROOK_H
 
 
-class Rook : public Piece{
+template <typename P>
+class Rook : public Piece<P>{
     public:
         Rook(bool white);
         ~Rook();
-        void move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
+        void move(Board<P> *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
 
 };
 

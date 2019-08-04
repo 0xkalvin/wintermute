@@ -3,11 +3,12 @@
 #define BISHOP_H
 
 
-class Bishop : public Piece{
+template <typename P>
+class Bishop : public Piece<P>{
     public:
         Bishop(bool white);
         ~Bishop();
-        void move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
+        void move(Board<P> *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
 
 };
 

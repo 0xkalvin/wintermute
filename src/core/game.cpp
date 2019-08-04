@@ -1,14 +1,15 @@
 #include "game.h"
 
-Game::Game(){
+template <typename P>
+Game<P>::Game(){
     this->isOver = false;
     this->moves = 0;
-    this->board = new Board();
-    this->black = new Player(this->board, 'B');
-    this->white = new Player(this->board, 'W');
+    this->board = new Board<int>();
+    this->black = new Player<int>(this->board, 'B');
+    this->white = new Player<int>(this->board, 'W');
 }
-
-Game::~Game(){
+template <typename P>
+Game<P>::~Game(){
     delete this->board;  
     delete this->black ;
     delete this->white ;
@@ -21,7 +22,8 @@ Game::~Game(){
     and each piece initial quantity 
 
  */
-void Game::showCapturedPieces(){
+template <typename P>
+void Game<P>::showCapturedPieces(){
     int deadPawnsWhite = this->white->pawn->getQuantity() - this->white->pawn->getAlive();
     int deadRooksWhite = this->white->rook->getQuantity() - this->white->rook->getAlive();
     int deadKnightsWhite = this->white->knight->getQuantity() - this->white->knight->getAlive();
@@ -55,7 +57,8 @@ void Game::showCapturedPieces(){
 /**
     Game interface
  */
-void Game::print(){  
+template <typename P>
+void Game<P>::print(){  
     cout << MAGENTA <<"                WINTERMUTE" << RESET <<endl;
     this->board->print();
     
@@ -76,7 +79,8 @@ void Game::print(){
     Controls white and black turn.
 
  */
-void Game::input(){
+template <typename P>
+void Game<P>::input(){
     int numberOrigin, numberDestination;
     char letterOrigin, letterDestination;
     bool isMoveValid = false;
@@ -144,10 +148,11 @@ void Game::input(){
     this->lastMove[3] = numberDestination + '0';
 }
 
-void Game::run(){  
+template <typename P>
+void Game<P>::run(){  
 
     while(!this->isOver){
-        system("clear");
+        //system("clear");
         this->print();
         this->input();
     }

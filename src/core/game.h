@@ -11,11 +11,12 @@
     - Prints the action 
 
  */
+template <typename P>
 class Game{
     private:
-        Board *board;
-        Player *white;
-        Player *black;
+        Board<P> *board;
+        Player<P> *white;
+        Player<P> *black;
         bool isOver;
         int moves;
         char lastMove[4];

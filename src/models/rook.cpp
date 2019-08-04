@@ -1,9 +1,10 @@
 #include "rook.h"
 
+template <typename P>
+Rook<P>::Rook(bool white) : Piece<P>(rookSymbol, rookValue, white, rookQuantity){}
 
-Rook::Rook(bool white) : Piece(rookSymbol, rookValue, white, rookQuantity){}
-
-Rook::~Rook(){}
+template <typename P>
+Rook<P>::~Rook(){}
 
 
 /**
@@ -13,7 +14,8 @@ Rook::~Rook(){}
     - Cannot change line and column at the same time
 
  */
-void Rook::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
+template <typename P>
+void Rook<P>::move(Board<P> *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
     if(xOrigin != xDestination && yOrigin != yDestination){
         throw "Rook cannot move to that square";
     } 

@@ -9,7 +9,7 @@
 int main()
 {
 
-    Game game;
+    Game<int> game;
 
     game.run();
     

@@ -1,9 +1,10 @@
 #include "knight.h"
 
+template <typename P>
+Knight<P>::Knight(bool white) : Piece<P>(knightSymbol, knightValue, white, knightQuantity){}
 
-Knight::Knight(bool white) : Piece(knightSymbol, knightValue, white, knightQuantity){}
-
-Knight::~Knight(){}
+template <typename P>
+Knight<P>::~Knight(){}
 
 /**
     Knight movement 
@@ -12,7 +13,8 @@ Knight::~Knight(){}
     which has an area of √5  
 
  */
-void Knight::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
+template <typename P>
+void Knight<P>::move(Board<P> *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
     double h = sqrt(pow(xDestination - xOrigin, 2) + pow(yDestination - yOrigin, 2));
     if(sqrt(5) != h) {
         throw "Knight cannot move to that square";

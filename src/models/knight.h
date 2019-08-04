@@ -3,11 +3,12 @@
 #define KNIGHT_H
 
 
-class Knight : public Piece{
+template <typename P>
+class Knight : public Piece<P>{
     public:
         Knight(bool white);
         ~Knight();
-        void move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
+        void move(Board<P> *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
 
 };
 

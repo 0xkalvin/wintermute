@@ -5,7 +5,8 @@
     Setting color and pieces
 
  */
-Player::Player(Board *b, char color)
+template <typename P>
+Player<P>::Player(Board<P> *b, char color)
 {
     this->isWhite = color == 'B' ? false : true;
     this->pawn = new Pawn(this->isWhite);
@@ -49,8 +50,8 @@ Player::Player(Board *b, char color)
         }
     }
 }
-
-Player::~Player()
+template <typename P>
+Player<P>::~Player()
 {
     delete this->bishop;
     delete this->pawn;
@@ -66,7 +67,8 @@ Player::~Player()
     - Based on the square value, move the right piece
 
  */
-void Player::move(Board *b, char letterOrigin, int numberOrigin, char letterDestination, int numberDestination){
+template <typename P>
+void Player<P>::move(Board<P> *b, char letterOrigin, int numberOrigin, char letterDestination, int numberDestination){
     int columnOrigin, lineOrigin, columnDestination, lineDestination;
     bool response;
 

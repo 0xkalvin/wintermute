@@ -3,11 +3,12 @@
 #define QUEEN_H
 
 
-class Queen : public Piece{
+template <typename P>
+class Queen : public Piece<P>{
     public:
         Queen(bool white);
         ~Queen();
-        void move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
+        void move(Board<P> *b, int xOrigin, int yOrigin, int xDestination, int yDestination);
 
 };
 

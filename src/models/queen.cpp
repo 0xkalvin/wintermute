@@ -1,9 +1,10 @@
 #include "queen.h"
 
+template <typename P>
+Queen<P>::Queen(bool white) : Piece<P>(queenSymbol, queenValue, white, queenQuantity){}
 
-Queen::Queen(bool white) : Piece(queenSymbol, queenValue, white, queenQuantity){}
-
-Queen::~Queen(){}
+template <typename P>
+Queen<P>::~Queen(){}
 
 /**
     Queen move
@@ -11,7 +12,8 @@ Queen::~Queen(){}
     - Basically, the overlay of rook & bishop movement
 
  */
-void Queen::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
+template <typename P>
+void Queen<P>::move(Board<P> *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
     int xDiff = abs(xOrigin - xDestination);
     int yDiff = abs(yOrigin - yDestination);
 

@@ -5,11 +5,22 @@
 #include "../config/settings.h"
 #include <cstdlib>
 
+template <typename P>
 class Pawn;
+
+template <typename P>
 class Knight;
+
+template <typename P>
 class Rook;
+
+template <typename P>
 class Bishop;
+
+template <typename P>
 class Queen;
+
+template <typename P>
 class King;
 
 /**
@@ -18,6 +29,7 @@ class King;
     - Stores piece value, symbol, color, state
 
  */
+template <typename P>
 class Piece{
     private:
         char symbol;
@@ -26,12 +38,12 @@ class Piece{
         int quantity;
         int alive;
         bool moved;
-        friend class Pawn;
-        friend class Knight;
-        friend class Rook;
-        friend class Bishop;
-        friend class Queen;
-        friend class King;
+        friend class Pawn<P>;
+        friend class Knight<P>;
+        friend class Rook<P>;
+        friend class Bishop<P>;
+        friend class Queen<P>;
+        friend class King<P>;
     
     public:
         Piece(char s, int v, bool white, int q);

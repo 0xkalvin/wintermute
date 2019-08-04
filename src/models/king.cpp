@@ -1,14 +1,16 @@
 #include "king.h"
 
+template <typename P>
+King<P>::King(bool white) : Piece<P>(kingSymbol, kingValue, white, kingQuantity){}
 
-King::King(bool white) : Piece(kingSymbol, kingValue, white, kingQuantity){}
-
-King::~King(){}
+template <typename P>
+King<P>::~King(){}
 
 /* 
     
 */
-void King::castle(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
+template <typename P>
+void King<P>::castle(Board<P> *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
 
     // king side 
     if(yDestination - yOrigin == 2 && b->matrix[xDestination][yDestination - 1] == emptyValue
@@ -35,7 +37,8 @@ void King::castle(Board *b, int xOrigin, int yOrigin, int xDestination, int yDes
     - Verifies move by checking if it's moving only a square unit
 
  */
-void King::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
+template <typename P>
+void King<P>::move(Board<P> *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
     int xDiff = abs(xOrigin - xDestination);
     int yDiff = abs(yOrigin - yDestination);
 

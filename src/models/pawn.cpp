@@ -1,9 +1,10 @@
 #include "pawn.h"
 
+template <typename P>
+Pawn<P>::Pawn(bool white) : Piece<P>(pawnSymbol, pawnValue, white, pawnQuantity){}
 
-Pawn::Pawn(bool white) : Piece(pawnSymbol, pawnValue, white, pawnQuantity){}
-
-Pawn::~Pawn(){}
+template <typename P>
+Pawn<P>::~Pawn(){}
 
 
 /**
@@ -14,7 +15,8 @@ Pawn::~Pawn(){}
     - if it gets to the other side of the board, promotion 
 
  */
-void Pawn::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){ 
+template <typename P>
+void Pawn<P>::move(Board<P> *b, int xOrigin, int yOrigin, int xDestination, int yDestination){ 
 
     cout << "VALOR: " << b->matrix[xDestination][yDestination] <<endl;
 
@@ -58,7 +60,8 @@ void Pawn::move(Board *b, int xOrigin, int yOrigin, int xDestination, int yDesti
     Promotes pawn to another more valuable piece if it hits the oponent edge of the board
 
  */
-void Pawn::promotion(Board *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
+template <typename P>
+void Pawn<P>::promotion(Board<P> *b, int xOrigin, int yOrigin, int xDestination, int yDestination){
     char piece;
     while(piece != rookSymbol && piece != knightSymbol && piece != bishopSymbol && piece != queenSymbol){
         cout << "Promote pawn to: (R, K, B, Q) " <<endl;

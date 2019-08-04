@@ -9,17 +9,18 @@
 
  */
 
-Board::Board(){
-    this->matrix = (int**)malloc(8 * sizeof(int*));
+template <typename P>
+Board<P>::Board(){
+    this->matrix = (Square<P>**)malloc(8 * sizeof(Square<P>*));
     for(int i = 0; i < 8; i++){
-        this->matrix[i] = (int*)malloc(8 * sizeof(int));
+        this->matrix[i] = (Square<P>*)malloc(8 * sizeof(Square<P>));
         for(int j = 0; j < 8; j++){
-            matrix[i][j] = 0;
+            matrix[i][j]->setValue(0);
         }
     }
 }
-
-Board::~Board(){
+template <typename P>
+Board<P>::~Board(){
     for(int i = 0 ; i < 8 ; i++ )   free(this->matrix[i]); 
     free(this->matrix);
 }
@@ -32,7 +33,8 @@ Board::~Board(){
     - Differ black and white pieces by positive and negative integers
 
  */
-void Board::print(){
+template <typename P>
+void Board<P>::print(){
     
     cout <<endl;
     cout << "     ";
@@ -50,19 +52,19 @@ void Board::print(){
         cout << " ";
         for(int j = 0; j < 8; j++){
             // WHITE
-            if(abs(this->matrix[i][j]) == pawnValue && this->matrix[i][j] > 0) cout <<"| " << BOLDWHITE << pawnSymbol << RESET <<" ";
-            else if(abs(this->matrix[i][j]) == knightValue && this->matrix[i][j] > 0) cout <<"| " << BOLDWHITE << knightSymbol << RESET << " ";
-            else if(abs(this->matrix[i][j]) == bishopValue && this->matrix[i][j] > 0) cout <<"| " << BOLDWHITE << bishopSymbol << RESET << " ";
-            else if(abs(this->matrix[i][j]) == rookValue && this->matrix[i][j] > 0) cout <<"| "  << BOLDWHITE << rookSymbol << RESET << " ";
-            else if(abs(this->matrix[i][j]) == queenValue && this->matrix[i][j] > 0) cout <<"| " << BOLDWHITE << queenSymbol << RESET << " ";
-            else if(abs(this->matrix[i][j]) == kingValue && this->matrix[i][j] > 0) cout <<"| "  << BOLDWHITE << kingSymbol << RESET << " ";
+            if(abs(this->matrix[i][j]->getValue()) == pawnValue && this->matrix[i][j]->getValue() > 0) cout <<"| " << BOLDWHITE << pawnSymbol << RESET <<" ";
+            else if(abs(this->matrix[i][j]->getValue()) == knightValue && this->matrix[i][j]->getValue() > 0) cout <<"| " << BOLDWHITE << knightSymbol << RESET << " ";
+            else if(abs(this->matrix[i][j]->getValue()) == bishopValue && this->matrix[i][j]->getValue() > 0) cout <<"| " << BOLDWHITE << bishopSymbol << RESET << " ";
+            else if(abs(this->matrix[i][j]->getValue()) == rookValue && this->matrix[i][j]->getValue() > 0) cout <<"| "  << BOLDWHITE << rookSymbol << RESET << " ";
+            else if(abs(this->matrix[i][j]->getValue()) == queenValue && this->matrix[i][j]->getValue() > 0) cout <<"| " << BOLDWHITE << queenSymbol << RESET << " ";
+            else if(abs(this->matrix[i][j]->getValue()) == kingValue && this->matrix[i][j] ->getValue()> 0) cout <<"| "  << BOLDWHITE << kingSymbol << RESET << " ";
             // BLACK
-            else if(abs(this->matrix[i][j]) == pawnValue && this->matrix[i][j] < 0) cout <<"| " << BOLDGREEN << pawnSymbol << RESET << " ";
-            else if(abs(this->matrix[i][j]) == knightValue && this->matrix[i][j] < 0) cout <<"| " << BOLDGREEN << knightSymbol << RESET << " ";
-            else if(abs(this->matrix[i][j]) == bishopValue && this->matrix[i][j] < 0) cout <<"| " << BOLDGREEN << bishopSymbol << RESET << " ";
-            else if(abs(this->matrix[i][j]) == rookValue && this->matrix[i][j] < 0) cout <<"| "  << BOLDGREEN << rookSymbol << RESET << " ";
-            else if(abs(this->matrix[i][j]) == queenValue && this->matrix[i][j] < 0) cout <<"| " << BOLDGREEN << queenSymbol << RESET << " ";
-            else if(abs(this->matrix[i][j]) == kingValue && this->matrix[i][j] < 0) cout <<"| "  << BOLDGREEN << kingSymbol << RESET << " ";
+            else if(abs(this->matrix[i][j]->getValue()) == pawnValue && this->matrix[i][j]->getValue() < 0) cout <<"| " << BOLDGREEN << pawnSymbol << RESET << " ";
+            else if(abs(this->matrix[i][j]->getValue()) == knightValue && this->matrix[i][j]->getValue() < 0) cout <<"| " << BOLDGREEN << knightSymbol << RESET << " ";
+            else if(abs(this->matrix[i][j]->getValue()) == bishopValue && this->matrix[i][j]->getValue() < 0) cout <<"| " << BOLDGREEN << bishopSymbol << RESET << " ";
+            else if(abs(this->matrix[i][j]->getValue()) == rookValue && this->matrix[i][j]->getValue() < 0) cout <<"| "  << BOLDGREEN << rookSymbol << RESET << " ";
+            else if(abs(this->matrix[i][j]->getValue()) == queenValue && this->matrix[i][j]->getValue() < 0) cout <<"| " << BOLDGREEN << queenSymbol << RESET << " ";
+            else if(abs(this->matrix[i][j]->getValue()) == kingValue && this->matrix[i][j]->getValue() < 0) cout <<"| "  << BOLDGREEN << kingSymbol << RESET << " ";
             else cout <<"| "  << CYAN << emptySymbol << RESET <<" ";
 
             if(j == 7)  cout << "|";

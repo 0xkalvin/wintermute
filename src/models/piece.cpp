@@ -1,36 +1,42 @@
 #include "piece.h"
 
-
-Piece::Piece(char s, int v, bool white, int q){
+template <typename P>
+Piece<P>::Piece(char s, int v, bool white, int q){
     this->symbol = s;
     this->value = v;
     this->white = white;
     this->quantity = this->alive = q;
     this->moved = false;
 }
+template <typename P>
+Piece<P>::~Piece(){}
 
-Piece::~Piece(){}
-
-char Piece::getSymbol(){
+template <typename P>
+char Piece<P>::getSymbol(){
     return this->symbol;
 }
 
-int Piece::getValue(){
+template <typename P>
+int Piece<P>::getValue(){
     return this->value;
 }
 
-bool Piece::isWhite(){
+template <typename P>
+bool Piece<P>::isWhite(){
     return this->white;
 }
 
-int Piece::getQuantity(){
+template <typename P>
+int Piece<P>::getQuantity(){
     return this->quantity;
 }
 
-void Piece::captured(){
+template <typename P>
+void Piece<P>::captured(){
     this->alive--;
 }
 
-int Piece::getAlive(){
+template <typename P>
+int Piece<P>::getAlive(){
     return this->alive;
 }

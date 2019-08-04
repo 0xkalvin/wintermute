@@ -10,7 +10,7 @@
 
 #include "board.h"
 
-
+template <typename P>
 class Game;
 
 /**
@@ -21,21 +21,22 @@ class Game;
     - Move verifications
 
  */
+template <typename P>
 class Player{
     private:
-        Pawn *pawn;
-        Rook *rook;
-        Knight *knight;
-        Bishop *bishop;
-        Queen *queen;
-        King *king;
+        Pawn<P> *pawn;
+        Rook<P> *rook;
+        Knight<P> *knight;
+        Bishop<P> *bishop;
+        Queen<P> *queen;
+        King<P> *king;
         bool isWhite;
-        friend class Game;
+        friend class Game<P>;
 
     public:
-        Player(Board *b, char color);
+        Player(Board<P> *b, char color);
         ~Player();
-        void move(Board *b, char letterOrigin, int numberOrigin, char letterDestination, int numberDestination);
+        void move(Board<P> *b, char letterOrigin, int numberOrigin, char letterDestination, int numberDestination);
 
 };
 

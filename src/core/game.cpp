@@ -147,7 +147,7 @@ void Game::input(){
 void Game::run(){  
 
     while(!this->isOver){
-        //system("clear");
+        system("clear");
         this->print();
         this->input();
     }

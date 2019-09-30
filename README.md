@@ -6,5 +6,13 @@ Wintermute is a (in progress) c++ chess game implementation that I'm coding to i
 </p>
 
 
+## Roadmap
+
+To be implemented:
+
+- Check/checkmate validation
+- En passant
+- Entire game notation record
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

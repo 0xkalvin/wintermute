@@ -6,6 +6,17 @@ Wintermute is a (in progress) c++ chess game implementation that I'm coding to i
 </p>
 
 
+## Build and run
+ 
+```
+make 
+```
+
+```
+make run
+```
+
+
 ## Roadmap
 
 To be implemented:

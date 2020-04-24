@@ -1,0 +1,6 @@
+*.out
+*.o
+*.git*
+.git
+LICENSE
+README.md

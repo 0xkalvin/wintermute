@@ -12,8 +12,10 @@ Wintermute is a (in progress) c++ chess game implementation that I'm coding to i
 make 
 ```
 
+### With docker
 ```
-make run
+docker build -t wintermute .
+docker run -i wintermute
 ```
 
 
